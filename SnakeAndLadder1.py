@@ -35,6 +35,7 @@ def wining_position():
     """
     player_pos = 0
     moves = 0
+    wining_moves = 0
     while player_pos != 100:
         moves += 1
         dies = die()
@@ -44,16 +45,17 @@ def wining_position():
             if player_pos + dies > 100:
                 continue
             else:
+                wining_moves += 1
                 player_pos += dies
+                print(f"{player_pos} ", end="")
         elif check_player == 1:  # snake
             player_pos -= dies
         else:
             continue
         if player_pos < 0:
             player_pos = 0
-        # print(f"{player_pos} ", end="")
 
-    print(f"\n{player_pos} Players wins after the {moves}")
+    print(f"\n{player_pos} Total moves are {moves}  And Wining Moves are {wining_moves}")
 
 
 if __name__ == '__main__':
