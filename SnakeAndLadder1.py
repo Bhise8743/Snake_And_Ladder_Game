@@ -28,31 +28,34 @@ def die():
 def wining_position():
     """
         Description:
-            it is the play the game and go to the 100 or above the 100
+            it is the play the game and go to 100 position
         Parameter: None
 
         Return: None
     """
-    player_pos = 0git
+    player_pos = 0
     moves = 0
-    while player_pos < 100:
+    while player_pos != 100:
         moves += 1
         dies = die()
+
         check_player = random.randint(0, 1)
         if check_player == 0:  # ladder
-            player_pos += dies
+            if player_pos + dies > 100:
+                continue
+            else:
+                player_pos += dies
         elif check_player == 1:  # snake
             player_pos -= dies
         else:
             continue
-
         if player_pos < 0:
             player_pos = 0
         # print(f"{player_pos} ", end="")
 
-    print(f"\n{player_pos} Players wins after the {moves} moves ")
+    print(f"\n{player_pos} Players wins after the {moves}")
 
 
 if __name__ == '__main__':
     print(f"Snake and Ladder game played with single player at start position 0 ")
-    wining_position();
+    wining_position()
